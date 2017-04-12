@@ -25,10 +25,11 @@ import domain.User;
  * @see 	 
  */
 @Service
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends CRUDBaseDaoImpl<User> implements UserDao  {
 
     @Override
     public User getUserById(Integer id) {
+        log.info("qws");
         return new User("zhang","password");
     }
 

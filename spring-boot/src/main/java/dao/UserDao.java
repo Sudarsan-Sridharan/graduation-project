@@ -21,7 +21,7 @@ import domain.User;
  * @since    JDK 1.6
  * @see 	 
  */
-public interface UserDao {
+public interface UserDao extends CRUDBaseDao<User> {
     public User getUserById(Integer id);
 }
 

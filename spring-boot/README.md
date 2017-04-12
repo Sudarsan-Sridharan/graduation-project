@@ -23,3 +23,6 @@ debug运行
 gradle bootRun --debug-jvm
 
 ```
+访问
+
+http://127.0.0.1:8080/rest/users/1

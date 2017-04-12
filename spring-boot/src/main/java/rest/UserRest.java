@@ -16,6 +16,9 @@ import java.util.List;
 import java.util.Map;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import domain.User;
@@ -24,7 +27,7 @@ import service.UserService;
 @Path("/users")  
 @Component 
 public class UserRest {
-
+    public static Logger log = LoggerFactory.getLogger(UserRest.class);  
     @Autowired  
     private UserService userService;  
     private static Map<Integer,User> users = Collections.synchronizedMap(new HashMap<Integer,User>());
@@ -36,6 +39,7 @@ public class UserRest {
     @Produces(MediaType.APPLICATION_JSON)
     public String postUser(@BeanParam User user){
         returnValue.clear();
+        log.info("post User");
         System.out.println(user);
         return " post success";
     }
@@ -60,12 +64,12 @@ public class UserRest {
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Map<String, Object> getUser(@PathParam("id") Integer id) {
-        returnValue.clear();
-        System.out.println("get:"+id);
+       returnValue.clear();
+       System.out.println("get:"+id);
        User user= userService.getUserById(id);
        returnValue.put("code", 200);
        returnValue.put("user", user);
-        return returnValue;
+       return returnValue;
     }
  
     @GET

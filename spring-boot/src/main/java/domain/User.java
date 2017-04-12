@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name="user")
 public class User {
-
     public User() {
+        
     }
     public User(String username, String password) {
         super();
